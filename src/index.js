@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import App from './containers/App';
+import todos from './todos';
 
-import './styles.css'
 
 ReactDOM.render(
-	<h1>Hello World</h1>,
+	<App title="TODO LIST" todos={todos}/>,
 	document.getElementById('root')
 )
+App.propTypes = {
+	title: PropTypes.string.isRequired
+}
+module.hot.accept();
