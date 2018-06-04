@@ -20,7 +20,8 @@ header {
 	display: flex;
 	justify-content: space-around;
 }
-.todo {
+.todo,
+.todo-edit-from {
 	display: flex;
 	font-size: 1rem;
 	border-top: 1px solid rgba(0,0,0, .1);
@@ -57,15 +58,30 @@ header {
 .todo .checkbox:hover {
 	cursor: pointer;
 }
-.todo .delete {
+.arrow,
+.pause,
+.stop,
+.todo-edit-from .save,
+.todo .delete,
+.todo .edit {
+	cursor: pointer;
 	margin-right: .5rem;
 	display: block;
 	width: 25px;
 	height: 25px;
 	border: none;
-	background: transparent url(./img/cart.png) no-repeat center center;
 	outline: none;
 	border-radius: 2px;
+}
+.todo .delete {
+	background: transparent url(./img/cart.png) no-repeat center center;
+}
+.todo .edit {
+	background: transparent url(./img/edit.png) no-repeat center center;
+}
+.todo-edit-from .save {
+	background: transparent url(./img/diskette.png) no-repeat center center;
+	margin-right: 0px;
 }
 .todo .delete:hover {
 	cursor: pointer;
@@ -91,20 +107,22 @@ header {
 .todo-edit-form input {
 	flex: 1;
 }
-.todo-edit-form .save {
-	margin-left: .5em;
-}
 .todo-form {
 	display: flex;
 	background-color: #fafafa;
 	border-top: 1px solid rgba(0,0,0, .1);
 }
+.todo-edit-from input,
 .todo-form input {
 	flex: 1;
 	outline: none;
 	transition: all .2s;
 	margin: 10px;
 	padding: 5px;
+	border: 1px solid #ccc;
+}
+.todo-edit-from input {
+	margin: 0px;
 }
 .todo-form input:focus {
 	border: 1px solid #00d8ff;
@@ -116,4 +134,56 @@ header {
 	margin-left: 10px;
 	color: rgb(128, 128, 128);
 	cursor: pointer;
+}
+
+.stopwatch-time {
+	font-size: 2rem;
+}
+.stopwatch-controls {
+	display: flex;
+	justify-content: space-around;
+}
+
+.stopwatch-controls button {
+	margin: 0;
+}
+.stopwatch-controls{
+	margin-top: 10px;
+}
+.pause {
+	background: transparent url(./img/pause.png) no-repeat center center;
+}
+.stop {
+	background: transparent url(./img/stop.png) no-repeat center center;
+}
+.arrow {
+	background: transparent url(./img/play.png) no-repeat center center;
+}
+
+/* Animations */
+
+.slide-enter {
+	transform: translateX(-100%);
+}
+
+.slide-enter.slide-enter-active {
+	transform: translateX(0);
+	transition: all 0.5s
+}
+
+.slide-leave {
+	transform: translateX(0);
+}
+
+.slide-leave.slide-leave-active {
+	transform: translateX(100%);
+	transition: all 0.5s
+}
+.slide-appear {
+	opacity: 0;
+}
+
+.slide-appear.slide-appear-active {
+	opacity: 1;
+	transition: all 0.5s
 }
